@@ -27,23 +27,23 @@ namespace SofETest.WebAdmin.Controllers
 
         // POST api/contributors
         [HttpPost]
-        public string Post([FromBody]Contributor contributor)
+        public Contributor Post([FromBody]Contributor contributor)
         {
             return client.Contributors.Create(contributor);
         }
 
         // PUT api/contributors, id comes with the object.
         [HttpPut]
-        public string Put([FromBody]Contributor contributor)
+        public Contributor Put([FromBody]Contributor contributor)
         {
             return client.Contributors.Update(contributor);
         }
 
         // DELETE api/contributors/5
         [HttpDelete]
-        public string Delete(int id)
+        public void Delete(int id)
         {
-            return client.Contributors.Delete(id);
+            client.Contributors.Delete(id);
         }
     }
 }

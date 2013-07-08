@@ -33,7 +33,7 @@ namespace SofETest.Clients
             return contributor;
         }
 
-        public string Create(Contributor contributor)
+        public Contributor Create(Contributor contributor)
         {
             Uri contributorUri = null;
 
@@ -43,21 +43,21 @@ namespace SofETest.Clients
                 contributorUri = response.Headers.Location;
             }
 
-            return contributorUri.AbsoluteUri;
+            return contributor;
         }
 
-        public string Update(Contributor contributor)
+        public Contributor Update(Contributor contributor)
         {
             HttpResponseMessage response = client.PutAsJsonAsync("api/contributors", contributor).Result;
             string responseMsg = string.Format("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
-            return responseMsg;
+            return contributor;
         }
 
-        public string Delete(int id)
+        public void Delete(int id)
         {
             HttpResponseMessage response = client.DeleteAsync(string.Format("api/contributors/{0}",id)).Result;
             string responseMsg = string.Format("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
-            return responseMsg;
+            //return responseMsg;
         }
     }
 }

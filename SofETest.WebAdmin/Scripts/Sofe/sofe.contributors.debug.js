@@ -22,14 +22,16 @@
 		        },
 
 		        update: {
-		            url: 'api/contributors',
+		            url: 'api/contributors/',
 		            dataType: 'json',
 		            contentType: 'application/json',
 		            type: 'PUT'
 		        },
 
 		        destroy: {
-		            url: 'api/contributors',
+		            url: function (contributor) {
+		                return 'api/contributors/' + contributor.Id;
+		            },
 		            dataType: 'json',
 		            contentType: 'application/json',
 		            type: 'DELETE'
@@ -92,11 +94,11 @@
         router = $sofe.router;
 
     router.route('/contributors', function () {
-
-        dataSource.read();
-
+        
+        //dataSource.read();
+        
         $sofe.mainLayout.showIn('#content', pageView);
-
+        
     });
 
 })(jQuery, jQuery.sofe);
